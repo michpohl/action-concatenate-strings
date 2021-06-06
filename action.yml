@@ -2,10 +2,18 @@ name: 'Your name here'
 description: 'Provide a description here'
 author: 'Your name or organization here'
 inputs:
-  milliseconds: # change this
+  first:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'the first string'
+  second:
+    required: true
+    description: 'the second string'
+  separator:
+    required: false
+    description: 'A string to put between the first and second'
+  output-var-name: 
+    required: true
+    description: 'Name of the new env var'
 runs:
   using: 'node12'
   main: 'dist/index.js'

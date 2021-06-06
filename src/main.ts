@@ -1,16 +1,29 @@
 import * as core from '@actions/core'
-import {wait} from './wait'
+
+function concatenate(first: string, second: string, separator: string): string {
+  return first + separator + second;
+}
+
+function setEnvironmentVariable(key: string, value: string) {
+  core.exportVariable(key, value);
+};
 
 async function run(): Promise<void> {
   try {
-    const ms: string = core.getInput('milliseconds')
-    core.debug(`Waiting ${ms} milliseconds ...`) // debug is only output if you set the secret `ACTIONS_RUNNER_DEBUG` to true
+    const first = core.getInput('first');
+    const second = core.getInput('second');
+    const outputName = core.getInput('output-var-name');
+    var separator = core.getInput('separator');
 
-    core.debug(new Date().toTimeString())
-    await wait(parseInt(ms, 10))
-    core.debug(new Date().toTimeString())
+    if (separator == null) {
+      separator = '';
+    }
 
-    core.setOutput('time', new Date().toTimeString())
+    const result = concatenate(first, second, separator);
+    setEnvironmentVariable(outputName, result);
+
+
+    core.info('Created env var ${outputName} with value: ${result}');
   } catch (error) {
     core.setFailed(error.message)
   }
