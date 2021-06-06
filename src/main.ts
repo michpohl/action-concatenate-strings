@@ -23,7 +23,7 @@ async function run(): Promise<void> {
     setEnvironmentVariable(outputName, result);
 
 
-    core.info('Created env var ${outputName} with value: ${result}');
+    core.info(`Created env var ${outputName} with value: ${result}`);
   } catch (error) {
     core.setFailed(error.message)
   }

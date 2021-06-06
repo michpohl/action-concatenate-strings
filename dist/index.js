@@ -56,7 +56,7 @@ function run() {
             }
             const result = concatenate(first, second, separator);
             setEnvironmentVariable(outputName, result);
-            core.info('Created env var ${outputName} with value: ${result}');
+            core.info(`Created env var ${outputName} with value: ${result}`);
         }
         catch (error) {
             core.setFailed(error.message);
