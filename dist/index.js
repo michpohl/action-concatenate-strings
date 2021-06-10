@@ -37,6 +37,10 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 const core = __importStar(__webpack_require__(186));
+String.prototype.isValidEnvVar = function () {
+    const matches = this.match(/[A-Z0-9_]*/);
+    return (matches === null || matches === void 0 ? void 0 : matches.length) == 1 && matches[0] == this;
+};
 function concatenate(first, second, separator) {
     return first + separator + second;
 }
@@ -51,12 +55,16 @@ function run() {
             const second = core.getInput('second');
             const outputName = core.getInput('output-var-name');
             var separator = core.getInput('separator');
+            if (!outputName.isValidEnvVar()) {
+                core.setFailed('Invalid env var name. Please ony use uppercase letters, numbers and the underscore character');
+            }
             if (separator == null) {
                 separator = '';
             }
             const result = concatenate(first, second, separator);
+            // TODO make sure output name is correct and usable
             setEnvironmentVariable(outputName, result);
-            core.info(`Created env var ${outputName} with value: ${result}`);
+            core.info(`Created env var ${outputName} with this value: ${result}`);
         }
         catch (error) {
             core.setFailed(error.message);
@@ -64,6 +72,7 @@ function run() {
     });
 }
 run();
+// export default run
 
 
 /***/ }),
