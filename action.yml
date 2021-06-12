@@ -1,5 +1,5 @@
 name: 'Concatenate strings with separator'
-description: 'Provides two strings and an optional separator and exposes them as an env var'
+description: 'Concatenates two strings with an optional separator and exposes them as an env var'
 author: 'Michael Pohl'
 inputs:
   first:
