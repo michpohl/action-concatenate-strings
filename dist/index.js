@@ -62,7 +62,6 @@ function run() {
                 separator = '';
             }
             const result = concatenate(first, second, separator);
-            // TODO make sure output name is correct and usable
             setEnvironmentVariable(outputName, result);
             core.info(`Created env var ${outputName} with this value: ${result}`);
         }
