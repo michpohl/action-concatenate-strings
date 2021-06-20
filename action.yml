@@ -1,11 +1,19 @@
-name: 'Your name here'
-description: 'Provide a description here'
-author: 'Your name or organization here'
+name: 'Concatenate strings with separator'
+description: 'Concatenates two strings with an optional separator and exposes them as an env var'
+author: 'Michael Pohl'
 inputs:
-  milliseconds: # change this
+  first:
     required: true
-    description: 'input description here'
-    default: 'default value if applicable'
+    description: 'Your first string'
+  second:
+    required: true
+    description: 'Your second string'
+  separator:
+    required: false
+    description: 'A string to put between the first and second provided strings'
+  output-var-name: 
+    required: true
+    description: 'The name of the output env var'
 runs:
   using: 'node12'
   main: 'dist/index.js'
