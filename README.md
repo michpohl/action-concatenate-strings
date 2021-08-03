@@ -1,6 +1,6 @@
 # Concatenate strings with a separator
 
-If you ever have the need to concatenate two strings, put a separator in between and publish the result as a new env var, this action is for you.
+If you ever have the need to concatenate two strings, put a separator in between and publish the result as a new env var (and don't feel like or don't know how to do it in bash), this action is for you.
 
 This is a simple job, so it's also a simple action and easy to use. This example appends the value of the *github.run_number*  env var to an env var holding my app's current version number, separated by a dot:
 ```
@@ -16,7 +16,7 @@ steps:
 Assuming `MY_APP_VERSION_NO` is **1.0** and my run number is **15**, 
 This would create an env var named `VERSION_NAME_STRING` with a value of `1.0.15`.
 
-Of course you don't need to use env vars, you can also enter plain strings. This one's output is an env var called `GREETINGS` with a value of `Hello, World`.
+Of course you don't need to use env vars, you can also enter plain strings. This one's output is an env var called `GREETINGS` with a value of `Hello, World`:
 
 ```
 steps:
